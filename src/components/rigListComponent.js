@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 
 
-class rigListComponent extends Component{
+class RigListComponent extends Component{
     render() {
         return (
         <div>Hi there</div>
@@ -13,4 +13,4 @@ class rigListComponent extends Component{
 }
 
 
-export default rigListComponent;
+export default RigListComponent;
