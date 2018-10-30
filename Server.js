@@ -5,7 +5,7 @@ const express = require('express'),
       app = module.exports = express();
 
 
-
+miningStatsUpdater.updateMiningStats();
 setInterval(miningStatsUpdater.updateMiningStats, 10000);
 
 
