@@ -1,25 +1,12 @@
 const express = require('express'),
-      bodyParser = require('body-parser'),
-      miningStatsCtrl = require('./src/MiningStatsController/MiningStatsCtrl'),
-      miningStatsUpdater = require('./src/MiningStatsController/MiningStatsUpdater'),
+      rigInfoController = require('./src/RigInfoController/RigInfoController'),
+      rigInfoUpdateController = require('./src/RiginfoController/RigInfoUpdateController'),
       app = module.exports = express();
 
-//miningStatsUpdater.updateMiningStats();
+//setInterval(rigInfoUpdateController.updateRigInfo, 30000);
 
-setInterval(miningStatsUpdater.updateMiningStats, 10000);
-
-
-
-app.use(bodyParser.json());
 app.use(express.static(__dirname + '/build'));
 
-
-
-app.get('/api/miningStats', miningStatsCtrl.getStats)
-
-
-
-
-
+app.get('/api/miningStats', rigInfoController.getRigInfo)
 
 app.listen(3000);

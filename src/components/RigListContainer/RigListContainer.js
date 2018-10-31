@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './RigListContainer.css';
 import Rig from '../Rig/Rig';
 
 const RigListContainer = props => {  
-    const { rigArray } = props  
+    const { rigInfo } = props  
 
         return (
             <div>
                 <ul className='rig-list'>
-                    { rigArray.map(rig =>
+                    { rigInfo.map(rig =>
                         <li key={ rig.rigNumber }> 
                             <Rig rig={ rig }/>
                         </li>
