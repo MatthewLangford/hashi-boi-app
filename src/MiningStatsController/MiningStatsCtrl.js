@@ -1,13 +1,10 @@
-let miningStatsUpdater = require('./MiningStatsUpdater.js');
-
+const miningStatsUpdater = require('./MiningStatsUpdater.js');
 
 module.exports = {
-
-    getStats : (req, res, next) => {
-        console.log('first rig is: ' + miningStatsUpdater.miningStats[0]);
-
+    getStats : async (req, res, next) => {
+        const rigArray =  await miningStatsUpdater.updateMiningStats();
         res.json({
-            rigArray: miningStatsUpdater.miningStats
+            rigArray: rigArray
         });
     }
 };

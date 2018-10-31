@@ -4,8 +4,8 @@ const express = require('express'),
       miningStatsUpdater = require('./src/MiningStatsController/MiningStatsUpdater'),
       app = module.exports = express();
 
+//miningStatsUpdater.updateMiningStats();
 
-miningStatsUpdater.updateMiningStats();
 setInterval(miningStatsUpdater.updateMiningStats, 10000);
 
 
