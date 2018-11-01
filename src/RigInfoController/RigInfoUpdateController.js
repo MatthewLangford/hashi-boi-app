@@ -4,12 +4,8 @@ let rigInfo = [];
 module.exports = {
     updateRigInfo: () => {
        // console.log(`inside the rig info update controller`);
-        rigInfo = rigInfoRepository.updateRigInfo();
+        rigInfo = rigInfoRepository.rigInfo;
         //console.log(rigInfo);
     },
 
-    getUpdatedRigInfo: () => {
-       // console.log(rigInfo);
-        return rigInfo;
-    }
 };

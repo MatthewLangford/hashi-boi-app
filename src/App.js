@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import RigListContainer from './components/RigListContainer/RigListContainer';
 import './App.css';
 
-const urlForMiningInfo = 'http://192.168.1.75:3000/api/miningStats';
+const urlForMiningInfo = 'http://192.168.1.75:3000/api/rigInfo';
 
 
 export default class App extends Component {

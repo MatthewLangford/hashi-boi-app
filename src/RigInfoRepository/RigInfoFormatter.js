@@ -1,6 +1,5 @@
 module.exports = {
-    formatRigInfo :  (rigNumber,info) => {
-            const { data } = info;
+    formatRigInfo :  (rigNumber,data) => {
             const formattedString = data.slice(data.indexOf(`{`), data.indexOf(`}`) + 1);
             const jsonData = JSON.parse(formattedString);
             const resultArray = jsonData.result;
@@ -29,7 +28,7 @@ module.exports = {
     formatRigError : (rigNumber, error) => {
         //console.log(error)
         const rigInfo = {
-            rigNumber: rigNumber ,
+            rigNumber: rigNumber,
             minerVersion: `error`,
             totalTimeInMinutes: `error`,
             hashrateTotal: `error`,

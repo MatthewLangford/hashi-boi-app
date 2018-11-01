@@ -1,12 +1,9 @@
-//const rigInfoUpdateController = require('./RigInfoUpdateController');
 const rigInfoRepository = require(`../RigInfoRepository/RigInfoRepository`);
-
 module.exports = {
     getRigInfo : async (req, res, next) => {
-        //const rigInfo = rigInfoUpdateController.getUpdatedRigInfo();
-        const rigInfo = await rigInfoRepository.updateRigInfo();
+        const responseData = await rigInfoRepository.getCurrentRigInfo();
         res.json({
-            rigInfo: rigInfo
+            rigInfo: responseData
         });
     }
 };

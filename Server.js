@@ -1,12 +1,12 @@
 const express = require('express'),
       rigInfoController = require('./src/RigInfoController/RigInfoController'),
-      rigInfoUpdateController = require('./src/RiginfoController/RigInfoUpdateController'),
+      rigInfoRepository = require('./src/RigInfoRepository/RigInfoRepository'),
       app = module.exports = express();
 
-//setInterval(rigInfoUpdateController.updateRigInfo, 30000);
+setInterval(rigInfoRepository.updateRigInfo, 30000);
 
 app.use(express.static(__dirname + '/build'));
 
-app.get('/api/miningStats', rigInfoController.getRigInfo)
+app.get('/api/rigInfo', rigInfoController.getRigInfo);
 
 app.listen(3000);
