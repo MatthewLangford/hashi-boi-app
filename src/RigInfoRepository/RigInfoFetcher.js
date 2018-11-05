@@ -4,6 +4,8 @@ const axios = require(`axios`),
       requestArray = requestArrayBuilder.BuildRequestArray();
       
 let rigInfoArray = [];
+    
+    
 
 module.exports = {
     update : async () => {
@@ -16,6 +18,7 @@ module.exports = {
             .then(async response => {
                 const { data } = response;
                 const rig = await rigInfoFormatter.formatRigInfo(index, data);
+
 
                 rigInfoArray[index] = rig;
             }).catch(async error => {

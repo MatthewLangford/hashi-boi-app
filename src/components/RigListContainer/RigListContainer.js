@@ -1,22 +1,22 @@
 import React from 'react';
+import  { Container } from 'react-grid-system';
+
 import './RigListContainer.css';
 import Rig from '../Rig/Rig';
+import ColumnHeader from './ColumnHeader';
 
 const RigListContainer = props => {  
     const { rigInfo } = props  
-
         return (
-            <div>
-                <ul className='rig-list'>
+            <div className='rig-list-container'>
+                <Container fluid={ true } className='grid-header'>
+                    <ColumnHeader />
                     { rigInfo.map(rig =>
-                        <li key={ rig.rigNumber }> 
-                            <Rig rig={ rig }/>
-                        </li>
+                        <Rig key={ rig.rigNumber} rig={ rig } />
                     )}
-                </ul>
+                </Container>
             </div>
         );
-    
 }
 
 export default RigListContainer;
