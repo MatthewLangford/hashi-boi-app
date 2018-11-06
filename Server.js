@@ -1,14 +1,29 @@
 const express = require('express'),
-      rigInfoController = require('./src/RigInfoController/RigInfoController'),
-      rigInfoRepository = require('./src/RigInfoRepository/RigInfoRepository'),
-      app = module.exports = express();
+    bodyParser = require(`body-parser`),  
+    app = module.exports = express(),
+    rigInfo = {};
 
-rigInfoRepository.updateRigInfo();      
-setInterval(rigInfoRepository.updateRigInfo, 30000);
+app.use(express.static(__dirname + '/build'));
+app.use(bodyParser.json());
 
-setInterval(rigInfoController.sendRigInfo, 35000);
-//app.use(express.static(__dirname + '/build'));
+app.get('/api/rigInfo', res => {
+    res.json(rigInfo)
+});
 
-//app.get('/api/rigInfo', rigInfoController.getRigInfo);
+app.post('/api/updateRigInfo', (req, res) =>{
+    const { data } = req.body;
+    console.log(req.body)
+    if(data){
+        rigInfo.rigInfoArray =  data.rigInfoArray;
+        rigInfo.totalAcceptedShares = data.totalAcceptedShares;
+        rigInfo.totalHashrate = data.totalInvalidShares;
+        rigInfo.totalRejectedShares = data.totalRejectedShares;
+        rigInfo.totalInvalidShares = data.totalInvalidShares;
+    res.json(rigInfo)
+    }
+});
 
-//app.listen(8080);
+
+app.listen(3004, () => {
+    console.log(`now listening on 3004`);
+});
