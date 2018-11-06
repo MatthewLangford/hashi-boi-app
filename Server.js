@@ -1,7 +1,10 @@
 const express = require('express'),
     bodyParser = require(`body-parser`),  
     app = module.exports = express(),
-    rigInfo = {};
+    rigInfo = {
+        rigInfoArray : [],
+        rigTotals : {}
+    };
 
 app.use(express.static(__dirname + '/build'));
 app.use(bodyParser.json());
@@ -14,12 +17,14 @@ app.post('/api/updateRigInfo', (req, res) =>{
     const { data } = req.body;
     console.log(req.body)
     if(data){
+        const { rigTotals } = rigInfo;
+
         rigInfo.rigInfoArray =  data.rigInfoArray;
-        rigInfo.totalAcceptedShares = data.totalAcceptedShares;
-        rigInfo.totalHashrate = data.totalInvalidShares;
-        rigInfo.totalRejectedShares = data.totalRejectedShares;
-        rigInfo.totalInvalidShares = data.totalInvalidShares;
-    res.json(rigInfo)
+        rigTotals.totalAcceptedShares = data.totalAcceptedShares;
+        rigTotals.totalHashrate = data.totalInvalidShares;
+        rigTotals.totalRejectedShares = data.totalRejectedShares;
+        rigTotals.totalInvalidShares = data.totalInvalidShares;
+    res.json(rigInfo);
     }
 });
 
