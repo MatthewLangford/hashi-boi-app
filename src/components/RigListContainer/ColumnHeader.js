@@ -4,17 +4,17 @@ import { Row, Col, Hidden } from 'react-grid-system';
 const ColumnHeader = (props) =>{
     return (
         <Row>
-            <Col className='header-column column' xs={3} sm={1} >Rig #</Col>
-            <Col className='header-column column' xs={3} sm={1} >Hashrate</Col>
-            <Col className='header-column column' xs={3} sm={1} >Acc/Rej/Inv</Col>
+            <Col className='column header-column' xs={2} sm={1} >#</Col>
+            <Col className='column header-column' xs={3} sm={1} >Hashrate</Col>
+            <Col className='column header-column' xs={4} sm={1.5} >Acc/Rej/Inv</Col>
             <Hidden xs>
-            <Col className='header-column column' sm={1}>Pool Switches</Col>
-                <Col className='header-column column' >Hashrate/Gpu</Col>
-                <Col className='header-column column' >Temp/Gpu</Col>
-                <Col className='header-column column' >Fan/Gpu</Col>
-                <Col className='header-column column' sm={1} >Miner Version</Col>
+                <Col className='column header-column' >Hashrate/Gpu</Col>
+                <Col className='column header-column' >Temp/Gpu</Col>
+                <Col className='column header-column' >Fan/Gpu</Col>
+                <Col className='column header-column' sm={.5}>PS</Col>
+                <Col className='column header-column' sm={1} >Version</Col>
             </Hidden>
-            <Col className='header-column column' xs={3} sm={1} >Time Active</Col>
+            <Col className='column header-column' xs={3} sm={1} >Time On</Col>
         </Row>
     );
 };

@@ -1,4 +1,4 @@
-@media (min-width: 786px) {
+@media (min-width: 1200px) {
   .App {
     width: 80%;
     margin-left: auto;
@@ -13,4 +13,8 @@
   border: black solid 1px; }
 
 .header-column {
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
+
+.right {
+  text-align: right; }

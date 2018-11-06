@@ -1,34 +1,39 @@
 const express = require('express'),
-    bodyParser = require(`body-parser`),  
+    bodyParser = require('body-parser'),  
     app = module.exports = express(),
     rigInfo = {
         rigInfoArray : [],
-        rigTotals : {}
+        rigTotals : {
+            totalAcceptedShares : 0,
+            totalHashrate : 0,
+            totalRejectedShares : 0,
+            totalInvalidShares : 0
+        }
     };
 
 app.use(express.static(__dirname + '/build'));
 app.use(bodyParser.json());
 
-app.get('/api/rigInfo', res => {
-    res.json(rigInfo)
+app.get('/api/rigInfo', (req,res) => {
+    res.send(rigInfo)
 });
 
 app.post('/api/updateRigInfo', (req, res) =>{
-    const { data } = req.body;
-    console.log(req.body)
-    if(data){
+    const { body } = req;
+    //console.log(body)
+    if(body){
         const { rigTotals } = rigInfo;
 
-        rigInfo.rigInfoArray =  data.rigInfoArray;
-        rigTotals.totalAcceptedShares = data.totalAcceptedShares;
-        rigTotals.totalHashrate = data.totalInvalidShares;
-        rigTotals.totalRejectedShares = data.totalRejectedShares;
-        rigTotals.totalInvalidShares = data.totalInvalidShares;
-    res.json(rigInfo);
+        rigInfo.rigInfoArray =  body.rigInfoArray;
+        rigTotals.totalAcceptedShares = body.totalAcceptedShares;
+        rigTotals.totalHashrate = body.totalHashrate;
+        rigTotals.totalRejectedShares = body.totalRejectedShares;
+        rigTotals.totalInvalidShares = body.totalInvalidShares;
+    res.json(body);
     }
 });
 
 
 app.listen(3004, () => {
-    console.log(`now listening on 3004`);
+    console.log('now listening on 3004');
 });

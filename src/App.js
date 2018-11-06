@@ -18,9 +18,8 @@ export default class App extends Component {
   getMiningData = async url => {
     try {
       const response = await axios.get(url);
-      const { rigInfo, rigTotals } = response.data;
-      console.log(rigInfo);
-      this.setState({rigInfo : rigInfo, totals: rigTotals})   
+      const { rigInfoArray, rigTotals } = response.data;
+      this.setState({rigInfo : rigInfoArray, rigTotals: rigTotals})   
     } catch (error) {
       console.log(error);
     };
@@ -32,12 +31,12 @@ export default class App extends Component {
   } 
 
   render() {
-    const { title, rigInfo, totals } = this.state;
+    const { title, rigInfo, rigTotals } = this.state;
 
     return (
-      <div className="App">
+      <div className='App'>
         <Header title={ title } />
-        <HeaderInfo totals={ totals } />
+        <HeaderInfo totals={ rigTotals } />
         <RigListContainer rigInfo={ rigInfo } />
       </div>
     );
