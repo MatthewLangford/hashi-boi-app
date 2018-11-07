@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import RigListContainer from './components/RigListContainer/RigListContainer';
 import './App.css';
 
-const urlForMiningInfo = 'http://192.168.1.66:3004/api/rigInfo';
+const urlForMiningInfo = '/api/rigInfo';
 
 export default class App extends Component {
   state = {
@@ -28,6 +28,7 @@ export default class App extends Component {
   componentDidMount() {
     console.log('app did mount fetching rig data');
     this.getMiningData(urlForMiningInfo);
+    setInterval(this.getMiningData(urlForMiningInfo), 30 * 1000);
   } 
 
   render() {
