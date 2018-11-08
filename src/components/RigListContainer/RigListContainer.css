@@ -14,7 +14,14 @@
 
 .header-column {
   font-weight: bold;
-  text-align: center; }
+  text-align: center;
+  background-color: #7C7C7C; }
 
 .right {
   text-align: right; }
+
+.error {
+  background-color: red; }
+
+.warning {
+  background-color: yellow; }

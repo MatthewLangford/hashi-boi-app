@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { string, object, array } from 'prop-types'
 
 import HeaderInfo from './components/Header/HeaderInfo';
 import Header from './components/Header/Header';
@@ -10,16 +11,28 @@ const urlForMiningInfo = '/api/rigInfo';
 
 export default class App extends Component {
   state = {
-    title : 'HashiBoi App',
-    rigInfo : [],
-    rigTotals : {} 
-  }; 
+    rigInfo: [],
+    rigTotals: {},
+    title: 'HashiBoi App'
+  };
+  
+  static propTypes = {
+    rigInfo: array,
+    rigTotals: object.isRequired,
+    title: string
+  };
+ 
+  static defaultProps = {
+      rigInfo: [],
+      rigTotals: {},
+      title: 'HashiBoi App'
+  };
 
   getMiningData = async url => {
     try {
       const response = await axios.get(url);
       const { rigInfoArray, rigTotals } = response.data;
-      this.setState({rigInfo : rigInfoArray, rigTotals: rigTotals})   
+      this.setState({rigInfo : rigInfoArray, rigTotals: rigTotals});   
     } catch (error) {
       console.log(error);
     };
@@ -28,17 +41,19 @@ export default class App extends Component {
   componentDidMount() {
     console.log('app did mount fetching rig data');
     this.getMiningData(urlForMiningInfo);
-    setInterval(this.getMiningData(urlForMiningInfo), 30 * 1000);
-  } 
+    setInterval(() => this.getMiningData(urlForMiningInfo), 60 * 1000);
+  }; 
 
+  
   render() {
-    const { title, rigInfo, rigTotals } = this.state;
 
+    const { title, rigInfo, rigTotals } = this.state;
+  
     return (
       <div className='App'>
         <Header title={ title } />
-        <HeaderInfo totals={ rigTotals } />
-        <RigListContainer rigInfo={ rigInfo } />
+        <HeaderInfo totals={ rigTotals || this.defaultProps.rigTotals} rigInfo={ rigInfo || this.defaultProps.rigInfo }/>
+        <RigListContainer rigInfo={ rigInfo || this.defaultProps.rigInfo} />
       </div>
     );
   };

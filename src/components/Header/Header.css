@@ -1,8 +1,16 @@
+@media (min-width: 1200px) {
+  .App {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px black solid; } }
+
 .title {
   border: solid black 1px;
   text-align: center;
   font-size: 28px;
-  background-color: grey; }
+  background-color: #7C7C7C; }
   .title h1 {
     margin: 0;
     padding-top: 25px;
