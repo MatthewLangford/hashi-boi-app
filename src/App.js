@@ -41,7 +41,7 @@ export default class App extends Component {
   componentDidMount() {
     console.log('app did mount fetching rig data');
     this.getMiningData(urlForMiningInfo);
-    setInterval(() => this.getMiningData(urlForMiningInfo), 60 * 1000);
+    setInterval(() => this.getMiningData(urlForMiningInfo), 61 * 1000);
   }; 
 
   

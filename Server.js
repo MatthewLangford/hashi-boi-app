@@ -7,7 +7,8 @@ const express = require('express'),
             totalAcceptedShares : 0,
             totalHashrate : 0,
             totalRejectedShares : 0,
-            totalInvalidShares : 0
+            totalInvalidShares : 0,
+            totalTimeInMinutes : 0
         }
     };
 
@@ -29,7 +30,8 @@ app.post('/api/updateRigInfo', (req, res) =>{
         rigTotals.totalHashrate = body.totalHashrate;
         rigTotals.totalRejectedShares = body.totalRejectedShares;
         rigTotals.totalInvalidShares = body.totalInvalidShares;
-    res.json(body);
+        rigTotals.totalTimeInMinutes = body.totalTimeInMinutes;
+    res.json('recieved');
     }
 });
 

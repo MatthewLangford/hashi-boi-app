@@ -17,25 +17,22 @@ export default class Rig extends Component {
 
     render () {
         const { rig } = this.state;
-        const averageShares = Math.floor(rig.acceptedShares / (rig.totalTimeInMinutes / 60))
-
+        const totalTimeFormatted = `${ Math.floor(rig.totalTimeInMinutes / 60) }: ${ rig.totalTimeInMinutes % 60 } ` || 0;
+        //console.log(rig)
         return (
-            <Row className={ `${averageShares < 300 && 'warning'}  ${rig.totalTimeInMinutes === 'error' && 'error'}`}>
-                <Col className='column' xs={2.5} sm={1} >{ rig.rigNumber }</Col>
-                <Col className='column right' xs={2.5} sm={1} >{ rig.hashrateTotal }</Col>
-                <Col className='column right' xs={4} sm={1.5} >{ rig.acceptedShares }/{ rig.rejectedShares }/{ rig.invalidShares }</Col>
+            <Row className={ `${rig.avgSharesPerHour < 300 && 'warning'}  ${rig.totalTimeInMinutes === 'error' && 'error'}`}>
+                <Col className='column' xs={2.5} sm={1} >{ rig.rigNumber || 0 }</Col>
+                <Col className='column right' xs={2.5} sm={1} >{ rig.hashrateTotal || 0 }</Col>
+                <Col className='column right' xs={4} sm={1.5} >{ rig.acceptedShares  || 0 }/{ rig.rejectedShares || 0 }/{ rig.invalidShares || 0}</Col>
                 <Hidden xs>
-                    <Col className='column' sm={1}>{ averageShares }</Col>
-                    <Col className='column hover-column'>AVG hashrate: { rig.hashratePerCard && 
-                                                                         Math.floor(rig.hashratePerCard.reduce((prev, curr) => prev + curr) / rig.hashratePerCard.length) }</Col>
-                    <Col className='column'>AVG Temp: { rig.tempPerCard && 
-                                                        Math.floor(rig.tempPerCard.reduce((prev, curr) => prev + curr) / rig.tempPerCard.length) }</Col>
-                    <Col className='column'>AVG Fan: { rig.fanPerCard && 
-                                                       Math.floor(rig.fanPerCard.reduce((prev, curr) => prev + curr)/ rig.fanPerCard.length) }</Col>
-                    <Col className='column' sm={.5} >{ rig.poolSwitches }</Col>
-                    <Col className='column' sm={1} >{ rig.minerVersion }</Col>
+                    <Col className='column' sm={1}>{ rig.avgSharesPerHour || 0 }</Col>
+                    <Col className='column hover-column'>{ `AVG Hashrate: ${ rig.avgHashratePerCard || 0 }` } </Col>
+                    <Col className='column'>{ `AVG Temp: ${ rig.avgTempPerCard || 0 }` }</Col>
+                    <Col className='column'>{ `AVG Fan: ${ rig.avgFanPerCard || 0 }` }</Col>
+                    <Col className='column' sm={.5} >{ rig.poolSwitches || 0 }</Col>
+                    <Col className='column' sm={1} >{ rig.minerVersion || 0 }</Col>
                 </Hidden>
-                <Col className='column right' xs={3} sm={1} >{ Math.floor(rig.totalTimeInMinutes / 60) } : { rig.totalTimeInMinutes % 60  }</Col>
+                <Col className='column right' xs={3} sm={1} >{ totalTimeFormatted }</Col>
             </Row>
         );
     };
