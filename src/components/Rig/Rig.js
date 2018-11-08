@@ -9,15 +9,15 @@ export default class Rig extends Component {
 
     static propTypes = {
         rig: object
-      };
+    };
      
-      static defaultProps = {
-          rig: {}
-      };
+    static defaultProps = {
+        rig: {}
+    };
 
-        render () {
-            const { rig } = this.state;
-            const averageShares = Math.floor(rig.acceptedShares / (rig.totalTimeInMinutes / 60))
+    render () {
+        const { rig } = this.state;
+        const averageShares = Math.floor(rig.acceptedShares / (rig.totalTimeInMinutes / 60))
 
         return (
             <Row className={ `${averageShares < 300 && 'warning'}  ${rig.totalTimeInMinutes === 'error' && 'error'}`}>
@@ -29,14 +29,14 @@ export default class Rig extends Component {
                     <Col className='column hover-column'>AVG hashrate: { rig.hashratePerCard && 
                                                                          Math.floor(rig.hashratePerCard.reduce((prev, curr) => prev + curr) / rig.hashratePerCard.length) }</Col>
                     <Col className='column'>AVG Temp: { rig.tempPerCard && 
-                                                                        Math.floor(rig.tempPerCard.reduce((prev, curr) => prev + curr) / rig.tempPerCard.length) }</Col>
+                                                        Math.floor(rig.tempPerCard.reduce((prev, curr) => prev + curr) / rig.tempPerCard.length) }</Col>
                     <Col className='column'>AVG Fan: { rig.fanPerCard && 
-                                                                      Math.floor(rig.fanPerCard.reduce((prev, curr) => prev + curr)/ rig.fanPerCard.length) }</Col>
+                                                       Math.floor(rig.fanPerCard.reduce((prev, curr) => prev + curr)/ rig.fanPerCard.length) }</Col>
                     <Col className='column' sm={.5} >{ rig.poolSwitches }</Col>
                     <Col className='column' sm={1} >{ rig.minerVersion }</Col>
                 </Hidden>
                 <Col className='column right' xs={3} sm={1} >{ Math.floor(rig.totalTimeInMinutes / 60) } : { rig.totalTimeInMinutes % 60  }</Col>
             </Row>
         );
-    }
+    };
 };

@@ -4,7 +4,8 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    border: 1px black solid; } }
+    border: 1px black solid;
+    font-family: Arial; } }
 
 .header-info-container {
   min-width: 100%; }
