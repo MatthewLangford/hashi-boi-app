@@ -1,0 +1,33 @@
+@media (min-width: 1200px) {
+  .App {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 3px;
+    font-family: Arial;
+    margin-bottom: 175px; } }
+
+.hover-div {
+  background-color: #7C7C7C;
+  border: black solid 3px;
+  border-radius: 5px;
+  font-size: 14px;
+  position: absolute;
+  z-index: 10; }
+
+.hashrate-div {
+  width: 250px;
+  height: 185px;
+  left: 315px; }
+
+.temp-div {
+  width: 270px;
+  height: 100px;
+  left: 508px; }
+
+.fan-div {
+  width: 250px;
+  height: 130px;
+  left: 737px; }

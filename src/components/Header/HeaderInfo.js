@@ -30,7 +30,7 @@ const HeaderInfo = ({ totals , rigInfo }) => {
             </Hidden>
             <Col className='column totals totals-header' xs={6} sm={3} ><strong>Active Rigs</strong></Col>
         </Row> 
-        <Row>
+        <Row className={ `${totals && 'good'}`}>
             <Col className='column totals' xs={6} sm={3} >{ totalHashrate }</Col>
             <Hidden xs>
                 <Col className='column totals' sm={3} >{ totalShares }</Col>  

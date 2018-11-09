@@ -5,7 +5,9 @@
     margin-right: auto;
     text-align: center;
     border: 1px black solid;
-    font-family: Arial; } }
+    border-radius: 3px;
+    font-family: Arial;
+    margin-bottom: 175px; } }
 
 .header-info-container {
   min-width: 100%; }
@@ -17,3 +19,6 @@
 
 .totals-header {
   background-color: #7C7C7C; }
+
+.good {
+  background-color: #27FE06; }
