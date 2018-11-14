@@ -7,7 +7,6 @@ import '../RigListContainer/RigListContainer.css';
 
 
 const HeaderInfo = ({ totals , rigInfo }) => {
-    //const { totals, rigInfo } = props;
 
     HeaderInfo.propTypes = {
         totals : object,

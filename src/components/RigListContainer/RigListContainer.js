@@ -16,7 +16,7 @@ const RigListContainer = ({rigInfo}) => {
                 <Container fluid={ true } className='grid-header'>
                     <ColumnHeader />
                     { rigInfo.map(rig =>
-                        <Rig key={ rig.rigNumber || 0 } rig={ rig || {}} />
+                        <Rig key={ rig.rigNumber } rig={ rig } />
                     )}
                 </Container>
             </div>

@@ -52,8 +52,8 @@ export default class App extends Component {
     return (
       <div className='App'>
         <Header title={ title } />
-        <HeaderInfo totals={ rigTotals || this.defaultProps.rigTotals } rigInfo={ rigInfo || this.defaultProps.rigInfo }/>
-        <RigListContainer rigInfo={ rigInfo || this.defaultProps.rigInfo } />
+        <HeaderInfo totals={ rigTotals } rigInfo={ rigInfo }/>
+        <RigListContainer rigInfo={ rigInfo } />
       </div>
     );
   };

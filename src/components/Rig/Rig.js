@@ -7,7 +7,7 @@ import './Rig.css';
 
 export default class Rig extends Component {
     state = {
-        rig: this.props.rig,
+        rig: {},
         hashratePopup : false,
         fanPopup: false,
         tempPopup: false
@@ -42,11 +42,19 @@ export default class Rig extends Component {
         || (type === 'fan' && { fanPopup: false }));
     }
 
+    componentDidMount() {
+        this.setState({rig: this.props.rig});
+    }
+
+    componentWillReceiveProps() {
+        this.setState({rig: this.props.rig});
+    }
+
     
     render () {
         const { rig, hashratePopup, tempPopup, fanPopup } = this.state;
         const errorRig = rig.totalTimeInMinutes === 'error';
-        const totalTimeFormatted = errorRig ? 0 : `${ Math.floor(rig.totalTimeInMinutes / 60) }: ${ rig.totalTimeInMinutes % 60 } `;
+        const totalTimeFormatted = errorRig ? 0 : `${ Math.floor(rig.totalTimeInMinutes / 60) }: ${ rig.totalTimeInMinutes % 60 }`;
         
         return (
             <Row className={ `${ ( rig.avgSharesPerHour >= 300 && !errorRig ) && 'good'} ${ rig.avgSharesPerHour < 300 && 'warning'}  ${ errorRig && 'error'}`}>
